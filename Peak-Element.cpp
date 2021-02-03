@@ -1,0 +1,58 @@
+/*
+Find the Highest number 
+
+Given an array in such a way that the elements stored in array are in increasing order initially and then after reaching to a peak element , elements stored are in decreasing order. Find the highest element.
+Note: A[i] != A[i+1]
+ 
+
+Example 1:
+
+Input:
+11
+1 2 3 4 5 6 5 4 3 2 1
+Output: 6
+Explanation: Highest element is 6.
+Example 2:
+
+Input:
+5
+1 2 3 4 5
+Output: 5
+Explanation: Highest element is 5.
+
+ 
+
+Your Task:
+You don't need to read or print anything. Your task is to complete the function findPeakElement() which takes the array as the input parameter and returns teh highest element.
+ 
+
+Expected Time Complexity: O(log(n))
+Expected Space Complexity: O(1)
+ 
+
+Constraints:
+2 <= Size of array <= 200
+1 <= Elements of the array <= 100000 
+
+*/
+
+
+class Solution {
+public:
+    int findPeakElement(vector<int>& a) 
+    {
+        // Code here.
+        int start=0,end=a.size()-1;
+        while(start <=end)
+        {
+            int mid=start+(end-start)/2;
+            
+            if(a[mid-1]<a[mid] && a[mid+1]<a[mid]) 
+                return a[mid];
+            if(a[mid-1]<a[mid] && a[mid+1]>a[mid])
+                start=mid+1;
+            else 
+            end=mid-1;
+        }
+    }
+};
